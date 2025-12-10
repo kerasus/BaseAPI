@@ -1,0 +1,27 @@
+{
+  "name": "base-api",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "peerDependencies": {
+    "axios": "^1.13.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "tsup": "^8.0.2",
+    "typescript": "^5.5.4"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs --target node18",
+    "clean": "rm -rf dist"
+  }
+}
