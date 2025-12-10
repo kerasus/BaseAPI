@@ -6,9 +6,13 @@ export type ListType<T> = {
    * Some APIs paginate with offset/length, others with page/length.
    * Keep both optional so children can normalize as needed.
    */
-  offset?: number
-  page?: number
-  length?: number
+  // offset?: number
+  // page?: number
+  // length?: number
+  // total?: number
+
+  offset: number
+  length: number
   total?: number
   [key: string]: any
 }
