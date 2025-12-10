@@ -1,17 +1,39 @@
 {
-  "name": "base-api",
+  "name": "api-basekit",
   "version": "1.0.0",
+  "description": "Abstract base class for Axios-powered HTTP services with pagination helpers.",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs"
     }
   },
+  "files": [
+    "dist"
+  ],
+  "author": "a.esmaeeli",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kerasus/BaseAPI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kerasus/BaseAPI/issues"
+  },
+  "homepage": "https://github.com/kerasus/BaseAPI#readme",
+  "keywords": [
+    "axios",
+    "typescript",
+    "api",
+    "pagination",
+    "abstract-class",
+    "http-client"
+  ],
   "peerDependencies": {
     "axios": "^1.13.2"
   },

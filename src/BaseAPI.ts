@@ -19,7 +19,7 @@ export type Endpoints = {
   [key: string]: any
 }
 
-export default abstract class BaseAPI<T> {
+export default abstract class APIBaseKit<T> {
   public baseEndpoint: string | Promise<string>
   public defaultObject: T
   public endpoints: Endpoints
