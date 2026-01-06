@@ -83,10 +83,11 @@ export default abstract class APIBaseKit<T> {
     return await this.endpoints.base
   }
 
-  async index (filters: any = { length: 10 }): Promise<ListType<T>> {
+  async index (filters: any = { length: 10 }, signal?: any): Promise<ListType<T>> {
     const baseEndpoint = await this.getBaseEndpoint()
     const response = await this.getAxiosInstanceWithToken()
       .get(baseEndpoint, {
+        signal,
         params: this.getNormalizedIndexFilter(filters)
       })
 
@@ -105,7 +106,7 @@ export default abstract class APIBaseKit<T> {
   async create (data: T | FormData): Promise<number> {
     const baseEndpoint = await this.getBaseEndpoint()
     const response: AxiosResponse<{ id: number }> = await this.getAxiosInstanceWithToken()
-    .post(baseEndpoint, data)
+      .post(baseEndpoint, data)
     return response.data.id
   }
 
@@ -144,10 +145,10 @@ export default abstract class APIBaseKit<T> {
     try {
       // Fetch the first page to get the total count
       const firstPageResponse = await this.index({
+        ...(indexFilter ?? {}),
         length: pageSize,
         offset: 0,
         withTotal: true,
-        ...(indexFilter ?? {})
       })
 
       const totalItems = firstPageResponse.total || 0
@@ -160,7 +161,7 @@ export default abstract class APIBaseKit<T> {
 
       for (let page = 1; page < totalPages; page++) {
         const offset = page * pageSize
-        pagePromises.push(this.index({ length: pageSize, offset, withTotal: false }))
+        pagePromises.push(this.index({ ...(indexFilter ?? {}), length: pageSize, offset, withTotal: false }))
       }
 
       // Await all page promises
