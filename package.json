@@ -1,6 +1,6 @@
 {
   "name": "api-basekit",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Abstract base class for Axios-powered HTTP services with pagination helpers.",
   "type": "module",
   "main": "dist/index.cjs",
@@ -56,7 +56,7 @@
     "lint": "eslint 'src/**/*.{ts,vue}'",
     "lint:fix": "eslint 'src/**/*.{ts,vue}' --fix",
     "type-check": "tsc --noEmit",
-    "prepublishOnly": "vite build",
+    "prepublishOnly": "npm run build",
     "build": "tsup src/index.ts --dts --format esm,cjs --target node18",
     "clean": "rm -rf dist"
   }
